@@ -1,0 +1,54 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Song+Myung&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        body{
+            background-color:deeppink
+            
+
+
+        }
+
+        h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-family: 'Song Myung', serif;
+      }
+      
+
+    </style>
+    <body>
+        
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">메뉴</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                      <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="#">Home</a>
+                        <a class="nav-item nav-link active" href="{% url 'new' %}">글쓰기 <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="{% url 'portfolio' %}">Portfolio</a>
+                
+                      </div>
+                    </div>
+                  </nav>
+    <h1 >명대사 블로그</h1>
+    {% for blog in blogs.all %}
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h6>
+                    <p class="card-text">{{blog.summary}}</p>
+                    <a href="{% url 'detail' blog.id %}" class="card-link">...more</a>
+                </div>
+            </div>
+        </div>
+        
+    {%endfor%}
+
+    </body>
+</html>
